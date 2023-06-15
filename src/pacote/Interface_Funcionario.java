@@ -16,6 +16,7 @@ public interface Interface_Funcionario {
     void setSalarioBase(double salarioBase);
     int getEscalao();
     void setEscalao(int escalao);
+    String getClasse();
 
     String print();
     void salario();

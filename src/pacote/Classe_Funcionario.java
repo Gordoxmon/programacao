@@ -9,12 +9,15 @@ public class Classe_Funcionario implements Interface_Funcionario {
 
     private final String classe = "Funcionario";
 
+    private int idFuncionario;
+
     public Classe_Funcionario() {
         nome = "Indefinido";
         escalao = 0;
     }
 
-    public Classe_Funcionario(String nome, int escalao) {
+    public Classe_Funcionario(int idFuncionario, String nome, int escalao) {
+        this.idFuncionario = idFuncionario;
         this.nome = nome;
         if (escalao >= 0) {
             this.escalao = escalao;
@@ -26,6 +29,7 @@ public class Classe_Funcionario implements Interface_Funcionario {
         this.salarioBase = funcionario.getSalarioBase();
         this.escalao = funcionario.getEscalao();
         this.salarioFinal = funcionario.getSalarioFinal();
+        this.idFuncionario = funcionario.getIdFuncionario();
     }
 
     public String getNome() {
@@ -55,11 +59,15 @@ public class Classe_Funcionario implements Interface_Funcionario {
     protected double getSalarioFinal() {
         return salarioFinal;
     }
+    protected int getIdFuncionario() { return idFuncionario; }
 
-    private String getClasse() { return classe; }
+    protected void setIdFuncionario(int idFuncionario) { this.idFuncionario = idFuncionario; }
+
+    public String getClasse() { return classe; }
 
     protected String printFuncionario() {
-        return "Nome: " + nome +
+        return "ID: " + idFuncionario +
+                "\nNome: " + nome +
                 "\nSalario Base: " + salarioBase +
                 "\nEscalao: " + escalao;
     }
@@ -77,7 +85,7 @@ public class Classe_Funcionario implements Interface_Funcionario {
     }
 
     protected String toStringFuncionario() {
-        return nome + " : " + salarioBase + " : " + escalao;
+        return idFuncionario + " : " + nome + " : " + salarioBase + " : " + escalao;
     }
 
     @Override

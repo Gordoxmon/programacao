@@ -10,13 +10,15 @@ public class Classe_Gestor extends Classe_Funcionario implements Interface_Gesto
 
     private final String classe = "Gestor";
 
+    private int numeroReunioes = 0;
+
     public Classe_Gestor() {
         super();
         departamento = "Indefinido";
     }
 
-    public Classe_Gestor(String nome, int escalao, String departamento, ArrayList<String> equipa) {
-        super(nome, escalao);
+    public Classe_Gestor(int idFuncionario, String nome, int escalao, String departamento, ArrayList<String> equipa) {
+        super(idFuncionario, nome, escalao);
         this.departamento = departamento;
         this.equipa = equipa;
     }
@@ -45,14 +47,20 @@ public class Classe_Gestor extends Classe_Funcionario implements Interface_Gesto
         this.equipa = equipa;
     }
 
-    private String getClasse() { return classe; }
+    public String getClasse() { return classe; }
+
+    public int getNumeroReunioes() { return numeroReunioes; }
+
+    public void setNumeroReunioes(int numeroReunioes) { this.numeroReunioes = numeroReunioes; }
 
     public String realizarReuniao() {
-        StringBuilder aux = new StringBuilder("Reunião do departamento " + departamento + " com a equipe:");
+        StringBuilder aux = new StringBuilder("Reunião " + numeroReunioes + " do departamento "
+                + departamento + " com a equipe:");
         for (String membro : equipa) {
             aux.append("\n- " + membro);
         }
         aux.append("\nReunião realizada com sucesso!");
+        numeroReunioes += 1;
         return String.valueOf(aux);
     }
 
@@ -62,6 +70,7 @@ public class Classe_Gestor extends Classe_Funcionario implements Interface_Gesto
         for (String membro : equipa) {
             a.append("-> ").append(membro).append("\n");
         }
+        a.append("Reuniões realizadas: ").append(numeroReunioes).append("\n");
         return String.valueOf(a);
     }
 

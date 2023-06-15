@@ -11,8 +11,8 @@ public class Classe_FuncionarioComum extends Classe_Funcionario implements Inter
         horasExtra = 0;
     }
 
-    public Classe_FuncionarioComum(String nome, int escalao, double horasExtra) {
-        super(nome, escalao);
+    public Classe_FuncionarioComum(int idFuncionario, String nome, int escalao, double horasExtra) {
+        super(idFuncionario, nome, escalao);
         this.horasExtra = horasExtra;
     }
 
@@ -30,7 +30,7 @@ public class Classe_FuncionarioComum extends Classe_Funcionario implements Inter
         this.horasExtra = horasExtra;
     }
 
-    private String getClasse() { return classe; }
+    public String getClasse() { return classe; }
 
     @Override
     public String print() {
